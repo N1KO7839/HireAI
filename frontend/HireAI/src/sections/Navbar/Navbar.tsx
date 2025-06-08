@@ -6,7 +6,7 @@ const Navbar = () => {
       <img src="../src/assets/chatbot.png" alt="HireAI Logo" className="w-14" />
       <h2>HireAI</h2>
       </div>
-      <Button text="Get Started" height="13" width="w-40" action={() => {
+      <Button text="Get Started" height="h-13" width="w-40" action={() => {
 
       }}/>
     </nav>
