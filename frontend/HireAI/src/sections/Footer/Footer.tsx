@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="flex justify-between items-center bg-slate-800/60 text-amber-50 mt-60">
+    <footer className="flex justify-between items-center bg-slate-800/60 text-amber-50 mt-12">
       <div className="m-4 flex items-center justify-center text-2xl font-semibold gap-2">
         <img
           src="../src/assets/chatbot.png"
