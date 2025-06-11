@@ -1,15 +1,18 @@
 import Button from "../../components/Button";
 import ChatMessage from "./ChatMessage";
 import { useState, useRef, useEffect } from "react";
+import axios from "axios";
 
 const ChatBot = () => {
   const [message, setMessage] = useState<string>("");
-  const [messages, setMessages] = useState<string[]>(["Hi there! What can I help you with today? Just type in the job you want to prepare for, and let's get you ready to nail the interview."]);
+  const [messages, setMessages] = useState<string[]>([
+    "Hi there! What can I help you with today? Just type in the job you want to prepare for, and let's get you ready to nail the interview.",
+  ]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   //scrolling down when there is new message
   const scrollToBottom = () => {
-    if(messages.length<1) return; //scroll only if there is more than 1 messages
+    if (messages.length < 1) return; //scroll only if there is more than 1 messages
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -18,12 +21,19 @@ const ChatBot = () => {
   }, [messages]);
 
   //function to send message when enter is pressed
-  const handleEnterPressed = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleEnterPressed = async (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     if (e.key == "Enter") {
       e.preventDefault();
       const trimmedMessage = message.trim();
       if (trimmedMessage === "") return;
       setMessages([...messages, message]);
+      setMessage("");
+      const response = await axios.post("http://localhost:3000/api/chat", {
+        message: message,
+      });
+      setMessages([...messages, message, response.data.reply]);
       setMessage("");
     }
   };
