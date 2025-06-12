@@ -4,6 +4,13 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
 const ChatBot = () => {
+  type Role = "user" | "assistant";
+
+  interface Message {
+    role: Role;
+    content: string;
+  }
+
   const [message, setMessage] = useState<string>("");
   const [messages, setMessages] = useState<string[]>([
     "Hi there! What can I help you with today? Just type in the job you want to prepare for, and let's get you ready to nail the interview.",
@@ -12,13 +19,23 @@ const ChatBot = () => {
 
   //scrolling down when there is new message
   const scrollToBottom = () => {
-    if (messages.length < 1) return; //scroll only if there is more than 1 messages
+    if (messages.length < 2) return; //scroll only if there is more than 1 messages
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  //function to format mesages that AI will understand the context
+  function formatMessages(messagesArray: string[]): Message[] {
+    return messagesArray.map((msg, index) => {
+      return {
+        role: index % 2 === 0 ? "assistant" : "user",
+        content: msg,
+      };
+    });
+  }
 
   //function to send message when enter is pressed
   const handleEnterPressed = async (
@@ -28,13 +45,26 @@ const ChatBot = () => {
       e.preventDefault();
       const trimmedMessage = message.trim();
       if (trimmedMessage === "") return;
-      setMessages([...messages, message]);
+
+      const updatedMessages = [...messages, trimmedMessage];
+      setMessages(updatedMessages);
       setMessage("");
+
+      const formattedMessages = formatMessages(updatedMessages);
+
+      const instructionForAI = [
+      {
+        role: "system",
+        content: `You are a professional recruiter conducting a formal job interview. The conversation contains alternating messages starting with you (assistant). Use context to respond naturally.`,
+      },
+      ...formattedMessages,
+    ];
+
       const response = await axios.post("http://localhost:3000/api/chat", {
-        message: message,
+        messages: instructionForAI,
       });
-      setMessages([...messages, message, response.data.reply]);
-      setMessage("");
+
+      setMessages([...updatedMessages, response.data.reply]);
     }
   };
 
