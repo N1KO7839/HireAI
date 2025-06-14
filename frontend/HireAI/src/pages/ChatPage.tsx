@@ -1,7 +1,7 @@
 import ChatBot from "../sections/AIChatSection/ChatBot"
 const ChatPage = () => {
   return (
-    <ChatBot/>
+    <ChatBot isTestChat={false}/>
   )
 }
 
