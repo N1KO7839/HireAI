@@ -57,8 +57,8 @@ Aplikacja będzie dostępna pod adresem: `http://localhost:5173` (lub innym, zal
 
 ### Strona główna
 
-![Zrzut ekranu strony głównej]((https://imgur.com/QDLOICv))
+![Zrzut ekranu strony głównej](https://imgur.com/QDLOICv.png)
 
 ### Sesja rozmowy kwalifikacyjnej
 
-![Zrzut ekranu sesji AI]([(https://imgur.com/8bCIHKr))
+![Zrzut ekranu sesji AI](https://imgur.com/8bCIHKr.png)
