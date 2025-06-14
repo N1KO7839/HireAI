@@ -1,20 +1,20 @@
-import Navbar from "./sections/Navbar/Navbar"
-import Hero from "./sections/HeroSection/Hero"
-import HowItWorks from "./sections/HowItWorksSection/HowItWorks"
-import Chat from "./sections/AIChatSection/Chat"
-import Footer from "./sections/Footer/Footer"
+import Navbar from "./sections/Navbar/Navbar";
+import Footer from "./sections/Footer/Footer";
+import Home from "./pages/Home";
+import ChatPage from "./pages/ChatPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 function App() {
-
   return (
-    <>
-      <Navbar/>
-      <Hero/>
-      <HowItWorks/>
-      <Chat/>
-
-      <Footer/>
-    </>
-  )
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/chat" element={<ChatPage />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

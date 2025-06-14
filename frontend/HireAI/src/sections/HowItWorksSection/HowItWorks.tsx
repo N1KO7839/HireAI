@@ -2,7 +2,7 @@ import HowItWorksPart from "./HowItWorksPart";
 
 const HowItWorks = () => {
   return (
-    <section className="bg-slate-800/60 text-amber-50 text-center py-20 sm:py-28 md:py-36">
+    <section className="bg-slate-800/60 text-amber-50 text-center py-22 sm:py-32 md:py-40">
       <div className="mx-4 sm:mx-6 md:mx-8">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold">
           How It Works

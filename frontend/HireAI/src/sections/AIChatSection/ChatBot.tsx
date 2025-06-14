@@ -69,7 +69,7 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center bg-slate-800 text-amber-50 rounded-2xl w-full max-w-5xl mx-auto p-5 mt-16">
+    <div className="flex flex-col justify-center bg-slate-800 text-amber-50 rounded-2xl w-11/12 mx-auto p-5 mt-16">
       <div className="flex items-center gap-4">
         <div className="rounded-full bg-blue-600 p-2">
           <img
@@ -81,7 +81,7 @@ const ChatBot = () => {
         <h3 className="text-2xl font-semibold">HireAI Assistant</h3>
       </div>
       <hr className="text-amber-50/5 border-t-3 rounded mt-4" />
-      <div className="flex flex-col text-start gap-2 mt-8 h-96 overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-slate-600/40 scrollbar-track-slate-800/50">
+      <div className="flex flex-col text-start gap-2 mt-8 h-116 overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-slate-600/40 scrollbar-track-slate-800/50">
         {/* Map to generate all messages */}
         {messages.map((messageMap, index) => {
           return (
