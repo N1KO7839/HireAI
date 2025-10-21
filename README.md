@@ -44,7 +44,7 @@
     ```bash
     # Backend
     cd backend
-    npm run dev
+    npm run start
 
     # Frontend
     cd frontend/HireAI/
