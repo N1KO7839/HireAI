@@ -18,7 +18,7 @@
 
 1. **Sklonuj repozytorium**
     ```bash
-    git clone https://github.com/twoj-uzytkownik/hireai.git
+    git clone https://github.com/N1KO7839/HireAI.git
     cd HireAI
     ```
 
